@@ -2,7 +2,7 @@ package optional;
 
 import java.util.Optional;
 
-public class OptionalUsage {
+public class OptionalExample {
     //Optional uses to avoid NullPointException
     public static void main(String[] args) {
         //Creating Optional Objects

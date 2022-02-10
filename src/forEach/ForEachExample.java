@@ -1,11 +1,9 @@
 package forEach;
 
-import streamApi.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class forEachUsage {
+public class ForEachExample {
     public static void main(String[] args) {
         //forEach() method can use with collection that implements Iterable interface
         List<Student> students  = new ArrayList<Student>();

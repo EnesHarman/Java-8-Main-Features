@@ -2,12 +2,10 @@ package streamApi;
 
 import java.util.ArrayList;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-public class StreamApiUsage {
+public class StreamApiExample {
     public static void main(String[] args) {
         //Stream api has been added to use filter/map/reduce/collect like operations with the collection.
         List<Product> products = new ArrayList<Product>();
@@ -26,7 +24,7 @@ public class StreamApiUsage {
         System.out.println(productPrices);
 
         //You can use .filter() to filter your collection.
-        //Also you can use these functions together.
+        //Also, you can use these functions together.
         List<String> expensiveProducts = products.stream().filter(product -> product.getPrice()>1200).map(product -> product.getName()).collect(Collectors.toList());
         System.out.println(expensiveProducts);
 

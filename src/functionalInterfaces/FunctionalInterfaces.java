@@ -7,9 +7,23 @@ public class FunctionalInterfaces {
       @FunctionalInterface annotation is used to tell the compiler interface is a functional interface.
       In this way, if there is a problem with functional interface rules, the compiler will throw an error.
       You can check Runnable interface for a good example.*/
+
+    @FunctionalInterface
+    interface Square{
+        int getSquare(int value);
+    }
+    @FunctionalInterface
+    interface Sum{
+        int getSum(int value1, int value2);
+    }
+    @FunctionalInterface
+    interface CheckPositive{
+        boolean checkPositiveOfNumber(int value);
+    }
+
     public static void main(String[] args) {
         int number1 = 4;
-        int number2=8;
+        int number2 = 8;
 
         Square square = (int input) ->input*input; // 1 Variable
         System.out.println("Square of "+number1 +" is :" + square.getSquare(number1));
@@ -30,15 +44,4 @@ public class FunctionalInterfaces {
         System.out.println(checkPositive.checkPositiveOfNumber(6));
     }
 }
-@FunctionalInterface
-interface Square{
-     int getSquare(int value);
-}
-@FunctionalInterface
-interface Sum{
-     int getSum(int value1, int value2);
-}
-@FunctionalInterface
-interface CheckPositive{
-    boolean checkPositiveOfNumber(int value);
-}
+
