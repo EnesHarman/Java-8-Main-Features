@@ -9,6 +9,16 @@ interface SumOperation{
     long sumNumbers(long number1, long number2);
 }
 
+@FunctionalInterface
+interface Messageable{
+    Message getMessage(String msg);
+}
+class Message{
+    Message(String msg){
+        System.out.print(msg);
+    }
+}
+
 class Calculator{
      long sumInputsWithExtraOperation(List<Long>inputs, Function<Long,Long> operation){
         long result = 0;
@@ -56,5 +66,11 @@ public class MethodReferencesExample {
 
         result = sumOperation.sumNumbers(2,7);
         System.out.println("Result with functional interface: " +result);
+
+        Messageable messageable = str->new Message(str);
+        messageable.getMessage("Message from constructor reference with lambda expression");
+        //or
+        Messageable messageable1 = Message::new;
+        messageable1.getMessage("Message from constructor reference with Method reference");
     }
 }
