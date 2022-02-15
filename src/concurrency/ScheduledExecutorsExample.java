@@ -13,5 +13,13 @@ public class ScheduledExecutorsExample {
         ScheduledFuture<?> future =  scheduledExecutorService.schedule(runnableTask,2, TimeUnit.SECONDS);
         System.out.println( future.getDelay(TimeUnit.MILLISECONDS));
         scheduledExecutorService.shutdown();
+
+        //This example will run every 2 seconds.
+        ScheduledExecutorService scheduledExecutorService2 = Executors.newScheduledThreadPool(1);
+        Runnable repetitiveTask = ()->{
+            System.out.println("Task started at: "+System.currentTimeMillis());
+        };
+        scheduledExecutorService2.scheduleAtFixedRate(repetitiveTask,0,2,TimeUnit.SECONDS);
+        //.scheduleAtFixedRate() only takes runnables as parameter.
     }
 }

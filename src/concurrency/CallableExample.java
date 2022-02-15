@@ -17,7 +17,7 @@ public class CallableExample {
         /*Callables are functional interfaces like Runnables. Unlike Runnanbles, Callables returns a value*/
         Callable<String> sayMyNameTask=()->{
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(1); //In callables, we don't need to cover sleep function with try-catch block unlike Runnable. Because callable can throw checked exception.
                 return "My name is Heisenberg";
             }
             catch (InterruptedException e){
@@ -60,7 +60,7 @@ public class CallableExample {
 
         executorServiceForManyTask.shutdown();
 
-        //Another way to pass multiple task to executer service is invokeAny() function. It returns the fastest task. Task2 in this example:
+        //Another way to pass multiple task to executer service is invokeAny() function. It returns the fastest task. Note that, it doesn't return Future. Task2 in this example:
         List<Callable<String>> callableListForInAny = Arrays.asList(
                 callableHelper("Task2",1),
                 callableHelper("Task1",5),

@@ -24,6 +24,36 @@ public class RunnableExample {
         MyThread myThread2 = new MyThread(sleepingRunnableTask,2);
         myThread2.start();
 
+        //If we use multiple threads and if we want to wait until first thread is done, we can use .join() method.
+
+        Thread firstThread = new Thread(()->{
+            System.out.println("The first thread is starting.");
+            try{
+                Thread.sleep(2000);
+            }catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
+            System.out.println("The first thread is done!");
+        });
+
+        Thread secondThread = new Thread(()->{
+            System.out.println("The second thread is starting.");
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException e) {
+                throw new IllegalStateException(e);
+            }
+            System.out.println("The second thread is done!");
+        });
+
+        firstThread.start();
+        try {
+            firstThread.join(2000); //it will wait 2000 second before second thread start. Without parameter join() will wait until first thread is done.
+        } catch (InterruptedException e) {
+            throw new IllegalStateException(e);
+        }
+        secondThread.start();
+
         // Creating threads like above is not safe and easy. There is a solution in  the Concurrency API. That named Executer
 
         //Creating threads with Executer
